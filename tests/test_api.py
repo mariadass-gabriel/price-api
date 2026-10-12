@@ -65,3 +65,21 @@ def test_predict_unseen_category_still_works(client):
 )
 def test_predict_invalid_returns_422(client, payload):
     assert client.post("/predict", json=payload).status_code == 422
+
+
+def test_cors_allows_portfolio_origin(client):
+    origin = "https://mariadass-gabriel.github.io"
+    r = client.options(
+        "/predict",
+        headers={
+            "Origin": origin,
+            "Access-Control-Request-Method": "POST",
+            "Access-Control-Request-Headers": "content-type",
+        },
+    )
+    assert r.status_code == 200
+    assert r.headers["access-control-allow-origin"] == origin
+    assert "access-control-allow-origin" not in client.options(
+        "/predict",
+        headers={"Origin": "https://example.com", "Access-Control-Request-Method": "POST"},
+    ).headers

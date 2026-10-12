@@ -6,6 +6,7 @@ from pathlib import Path
 import joblib
 import pandas as pd
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from src.schemas import HealthResponse, PredictRequest, PredictResponse
 
@@ -24,6 +25,14 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(title="Price API", version="1.0.0", lifespan=lifespan)
+
+# Lets the portfolio's demo page call the API from the browser (cross-origin).
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://mariadass-gabriel.github.io"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type"],
+)
 
 
 @app.get("/health", response_model=HealthResponse)
