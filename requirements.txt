@@ -1,0 +1,14 @@
+# Runtime dependencies of the API only (no MLflow, no training tools).
+# Versions must match the ones used by src/train.py so that model.joblib loads.
+fastapi==0.143.0
+uvicorn==0.54.0
+pydantic==2.14.0
+scikit-learn==1.7.2
+# Same version everywhere. On Linux (Docker / CI / Cloud Run) use the CPU-only build: the default wheel
+# pulls ~800 MB of GPU libraries (nvidia-nccl) that Cloud Run cannot use.
+xgboost-cpu==3.0.5; sys_platform == "linux"
+xgboost==3.0.5; sys_platform != "linux"
+pandas==2.3.3
+numpy==2.2.6
+scipy==1.15.3
+joblib==1.6.0

@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# MLflow local tracking
+mlruns/
+mlflow.db
+
+# Raw data (CC BY 4.0, re-downloadable with `python -m src.data`)
+data/
+
+# Secrets / local env
+.env
+*.json.key
+gcp-key*.json
+.DS_Store

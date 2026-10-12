@@ -1,0 +1,4 @@
+# Training and experiment tracking (adds to the API requirements).
+-r requirements.txt
+mlflow==3.17.0
+certifi
