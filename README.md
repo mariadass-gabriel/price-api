@@ -7,7 +7,7 @@ project is the deployment path** (Docker, FastAPI, CI/CD, MLflow, pytest, GCP).
 Given a product's shop, brand, category, title, user rating and number of reviews, `POST /predict` returns a
 predicted price and a 90 % prediction interval `[low, high]`.
 
-- **Demo URL:** _TODO: paste the Cloud Run URL here after the first deploy_
+- **Demo URL:** <https://price-api-5fhpnacpvq-ew.a.run.app> ([interactive docs](https://price-api-5fhpnacpvq-ew.a.run.app/docs))
 - **MLflow UI:** ![MLflow training runs](docs/mlflow.png)
 
 ## Architecture
